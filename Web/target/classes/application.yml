@@ -1,0 +1,18 @@
+server:
+  name: web1
+  port: 9002
+
+spring:
+  application:
+    name: web1
+
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: ${spring.cloud.client.ip-address}
+    instanceId: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9000/eureka/
+
